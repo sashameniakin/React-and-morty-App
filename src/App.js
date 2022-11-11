@@ -1,8 +1,9 @@
 import Header from "./components/Header/header";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
-import Card from "./components/Card/card";
+
 import { useState, useEffect } from "react";
+import Cards from "./cards";
 
 function App() {
   const [rickAndMorty, setRickAndMorty] = useState([]);
@@ -28,14 +29,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <button onClick={loadDataFromMorty}>Load Rick and Morty</button>
-      <ul>
-        {rickAndMorty.map(({ name }) => (
-          <li key={name}>{name}</li>
-        ))}
-      </ul>
-      <Card />
-
+      <Cards rickAndMorty={rickAndMorty} />
       <Navigation />
     </div>
   );
