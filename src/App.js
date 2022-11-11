@@ -1,10 +1,14 @@
-import logo from "./logo.svg";
+import Header from "./components/Header/header";
 import "./App.css";
+import Navigation from "./components/Navigation/Navigation";
+import Card from "./components/Card/card";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <Header />
+      <Card />
+      <Navigation />
     </div>
   );
 }
