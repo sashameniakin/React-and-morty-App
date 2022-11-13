@@ -23,13 +23,10 @@ function App() {
       const response = await fetch("https://rickandmortyapi.com/api/character");
       const data = await response.json();
       setRickAndMorty(data.results);
-      console.log(data.results);
     } catch (error) {
       console.log(error);
     }
   }
-
-  /*   console.log(rickAndMorty); */
 
   return (
     <div className="App">

@@ -2,10 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function NavElement({ value, color }) {
-  /*  function navigateTo(value) {
-    navigate(value);
-  } */
-
   return (
     <>
       <StyledLiLi to={value} color={color}>
