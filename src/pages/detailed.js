@@ -9,8 +9,6 @@ export default function Details({ rickAndMorty }) {
     return person.id === location.state.data.id;
   });
 
-  console.log(cardDetail);
-
   return (
     <StyledArticle>
       <h1>Detailed</h1>
