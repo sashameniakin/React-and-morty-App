@@ -13,6 +13,32 @@ function App() {
   const [rickAndMorty, setRickAndMorty] = useState([]);
   const [fetchUrl, setFetchUrl] = useState([]);
 
+  const [newCards, setNewCards] = useState(() => {
+    const localData = JSON.parse(localStorage.getItem("bookmarked"));
+
+    return localData ?? rickAndMorty;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("bookmarked", JSON.stringify(newCards));
+  }, [newCards]);
+
+  const toggleBookmark = (ID) => {
+    setNewCards(
+      newCards.map((card) => {
+        if (ID === card.id) {
+          return {
+            ...card,
+            isBookmarked: !card.isBookmarked,
+          };
+        } else {
+          return card;
+        }
+      })
+    );
+  };
+  console.log(newCards);
+
   useEffect(() => {
     setFetchUrl("https://rickandmortyapi.com/api/character");
     loadDataFromMorty();
@@ -35,9 +61,15 @@ function App() {
       <Routes>
         <Route
           path="/detailed"
-          element={<Details rickAndMorty={rickAndMorty} />}
+          element={
+            <Details
+              rickAndMorty={rickAndMorty}
+              newCards={newCards}
+              onToggleBookmark={toggleBookmark}
+            />
+          }
         />
-        <Route path="/bookmark" element={<Bookmark />} />
+        <Route path="/bookmark" element={<Bookmark newCards={newCards} />} />
         <Route path="/" element={<Home rickAndMorty={rickAndMorty} />} />
         <Route path="/random" element={<Random />} />
       </Routes>
