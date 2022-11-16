@@ -23,5 +23,5 @@ const StyledHeader = styled.header`
 `;
 
 const StyledDiv = styled.div`
-  padding-top: 15%;
+  padding-top: 10%;
 `;
